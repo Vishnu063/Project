@@ -1,0 +1,41 @@
+name: Deploy to AWS S3
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-south-1
+        
+    - name: Deploy to S3
+      run: |
+        echo "Deploying to S3 bucket: ${{ secrets.S3_BUCKET_NAME }}"
+        
+        # Sync all files to S3
+        aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --delete
+        
+        # Set cache headers for better performance
+        aws s3 cp s3://${{ secrets.S3_BUCKET_NAME }}/index.html s3://${{ secrets.S3_BUCKET_NAME }}/index.html \
+          --cache-control "max-age=0, no-cache"
+        aws s3 cp s3://${{ secrets.S3_BUCKET_NAME }}/style.css s3://${{ secrets.S3_BUCKET_NAME }}/style.css \
+          --cache-control "max-age=31536000"
+          
+        echo "✅ Deployment completed successfully!"
+        
+    - name: Get Website URL
+      run: |
+        echo "🌐 Your website is live at:"
+        echo "http://${{ secrets.S3_BUCKET_NAME }}.s3-website.ap-south-1.amazonaws.com"

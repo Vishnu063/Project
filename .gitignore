@@ -1,0 +1,14 @@
+# AWS credentials
+.env
+*.pem
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules (if you add JavaScript later)
+node_modules/
+
+# Temporary files
+*.tmp
+*.log

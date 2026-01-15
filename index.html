@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishnu's DevOps Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🚀 Vishnu Kushwaha</h1>
+        <h2>DevOps Engineer</h2>
+        <p>Pune, Maharashtra | vishnukushwaha63@gmail.com</p>
+    </header>
+    
+    <section class="about">
+        <h3>About This Project</h3>
+        <p>This website is automatically deployed using:</p>
+        <div class="tech-stack">
+            <span class="tech">AWS S3</span>
+            <span class="tech">GitHub Actions</span>
+            <span class="tech">AWS CLI</span>
+            <span class="tech">Terraform</span>
+        </div>
+    </section>
+    
+    <section class="deployment-info">
+        <h3>Deployment Status</h3>
+        <div class="status-card">
+            <p><strong>Last Updated:</strong> <span id="timestamp"></span></p>
+            <p><strong>Bucket Name:</strong> <span id="bucket-name"></span></p>
+            <p><strong>Status:</strong> <span class="status-success">✓ Live</span></p>
+        </div>
+    </section>
+    
+    <section class="skills">
+        <h3>AWS Skills Demonstrated</h3>
+        <ul>
+            <li>S3 Bucket Creation & Configuration</li>
+            <li>Static Website Hosting</li>
+            <li>IAM Policy Management</li>
+            <li>Automated Deployment with CI/CD</li>
+        </ul>
+    </section>
+    
+    <footer>
+        <p>Connected with GitHub: <a href="https://github.com/Vishnu063/Project">Vishnu063/Project</a></p>
+    </footer>
+    
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        document.getElementById('bucket-name').textContent = window.location.hostname;
+    </script>
+</body>
+</html>

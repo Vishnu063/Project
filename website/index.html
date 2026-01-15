@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS DevOps Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 AWS DevOps Project</h1>
+            <p class="subtitle">Automated Deployment with GitHub Actions</p>
+        </header>
+        
+        <section class="project-info">
+            <h2>Project Details</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">AWS S3</span>
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">CI/CD</span>
+            </div>
+            
+            <div class="deployment-status">
+                <h3>Deployment Status</h3>
+                <p>Last deployed: <span id="deployment-time">Loading...</span></p>
+                <div id="status-indicator" class="status-pending">⏳ Checking...</div>
+            </div>
+        </section>
+        
+        <section class="about">
+            <h2>About This Project</h2>
+            <ul>
+                <li>Automated CI/CD pipeline using GitHub Actions</li>
+                <li>Static website hosted on AWS S3</li>
+                <li>Infrastructure as Code with Terraform</li>
+                <li>Zero-downtime deployments</li>
+                <li>Automated testing and validation</li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>Built by Vishnu Kushwaha | DevOps Engineer</p>
+            <p class="timestamp">Deployment timestamp: <span id="timestamp"></span></p>
+        </footer>
+    </div>
+    
+    <script>
+        const now = new Date();
+        document.getElementById('timestamp').textContent = now.toLocaleString();
+        document.getElementById('deployment-time').textContent = now.toLocaleString();
+        
+        setTimeout(() => {
+            document.getElementById('status-indicator').className = 'status-success';
+            document.getElementById('status-indicator').textContent = '✅ Deployment Successful';
+        }, 1000);
+    </script>
+</body>
+</html>
